@@ -263,7 +263,7 @@ function win_check()
 {
 if( ((fill[0] == 1) && (fill[1] == 1) && (fill[2] == 1))||((fill[3] == 1) && (fill[4] == 1) && (fill[5] == 1))||((fill[6] == 1) && (fill[7] == 1) && (fill[8] == 1))||((fill[0] == 1) && (fill[3] == 1) && (fill[6] == 1))||((fill[1] == 1) && (fill[4] == 1) && (fill[7] == 1))||((fill[2] == 1) && (fill[5] == 1) && (fill[8] == 1))||((fill[0] == 1) && (fill[4] == 1) && (fill[8] == 1))||((fill[2] == 1) && (fill[4] == 1) && (fill[6] == 1)) )
 {
-b = [1,1,1,1,1,1,1,1,1];
+fill = [1,1,1,1,1,1,1,1,1];
 if(game_end == 0){
 score_X++;
 X_streak += "W " 
@@ -278,14 +278,14 @@ document.getElementById("cap").innerHTML = p1 + " Won.Press <b>R</b> to reset.Pr
 else{
 alert(p2+ " wins");
 document.getElementById("cap").innerHTML = p2 + " Won.Press <b>R</b> to reset.Press <b>Space Bar</b> to go back to the menu.";
-game_end=1;
-}
 
+}
+game_end=1;
 }
 }
 else if( ((fill[0] == 0) && (fill[1] == 0) && (fill[2] == 0))||((fill[3] == 0) && (fill[4] == 0) && (fill[5] == 0))||((fill[6] == 0) && (fill[7] == 0) && (fill[8] == 0))||((fill[0] == 0) && (fill[3] == 0) && (fill[6] == 0))||((fill[1] == 0) && (fill[4] == 0) && (fill[7] == 0))||((fill[2] == 0) && (fill[5] == 0) && (fill[8] == 0))||((fill[0] == 0) && (fill[4] == 0) && (fill[8] == 0))||((fill[2] == 0) && (fill[4] == 0) && (fill[6] == 0)) )
 {
-b = [1,1,1,1,1,1,1,1,1];
+fill = [1,1,1,1,1,1,1,1,1];
 if(game_end == 0){
 score_O++;
 X_streak += "L " 
@@ -300,8 +300,9 @@ document.getElementById("cap").innerHTML = p2 + " Won.Press <b>R</b> to reset.Pr
 else{
 alert(p1+ " wins");
 document.getElementById("cap").innerHTML = p1 + " Won.Press <b>R</b> to reset.Press <b>Space Bar</b> to go back to the menu.";
-game_end=1;
+
 }
+game_end=1;
 }
 }
 else if(fill[0]!=-1 && fill[1]!=-1 && fill[2]!=-1 && fill[3]!=-1 && fill[4]!=-1 && fill[5]!=-1 && fill[6]!=-1 && fill[7]!=-1 && fill[8]!=-1 )
