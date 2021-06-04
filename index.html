@@ -1,23 +1,66 @@
 <html>
 <head>
+ <title>TIC TAC TOE</title>
+ <style>
+  #btn2
+  {
+   visibility:hidden;
+  }
+   #btn3
+  {
+   visibility:hidden;
+  }
+   #btn4
+  {
+   visibility:hidden;
+  }
+   #btn5
+  {
+   visibility:hidden;
+  }
+   #btn6
+  {
+   visibility:hidden;
+  }
+    #i1
+  {
+   visibility:hidden;
+  } 
+  #i2
+  {
+   visibility:hidden;
+  }
+    #p1
+  {
+   visibility:hidden;
+  }
+    #p2
+  {
+   visibility:hidden;
+  }
+   #table
+  {
+   visibility:hidden;
+  }
+ </style>
 </head>
 <body>
-<div id="p1" style="visibility:hidden;">  </div>
-<div id="p2" style="visibility:hidden;"> </div>
+<div id="p1" >  </div>
+<div id="p2" > </div>
 <button id="btn1"type="button" onclick="strt_gm_btn()"> Start Game </button>
-<Input id="i1" style="visibility:hidden;"  placeholder="Enter Player 1 Name"> 
-<Input id="i2" style="visibility:hidden;"  placeholder="Enter Player 2 Name"> 
-<label for="btn2" id="l1" style="visibility:hidden;">plyr 1 play as: X</label>
-<input type="radio" id="btn2" name="turn"  style="visibility:hidden;" onclick="p(1)" >
+<Input id="i1"  placeholder="Enter Player 1 Name"> 
+<Input id="i2"  placeholder="Enter Player 2 Name"> 
+<label for="btn2" id="l1" style="">plyr 1 play as: X</label>
+<input type="radio" id="btn2" name="turn"  onclick="p(1)" >
 <label for="btn3" id="l2" style="visibility:hidden;">O</label>
-<input type="radio" id="btn3" name="turn"   style="visibility:hidden;" onclick="p(0)"  >
+<input type="radio" id="btn3" name="turn"   onclick="p(0)"  >
 <label for="btn4" id="l3" style="visibility:hidden;">plyr 2 play as: X</label>
-<input type="radio" id="btn4" name="turn"  style="visibility:hidden;" onclick="p(0)"  >
+<input type="radio" id="btn4" name="turn"   onclick="p(0)"  >
 <label for="btn5" id="l4" style="visibility:hidden;">O</label>
-<input type="radio" id="btn5" name="turn"   style="visibility:hidden;" onclick="p(1)" >
-<button id="btn6"  style="visibility:hidden;" onclick="main_game()">start</button>
+<input type="radio" id="btn5" name="turn"    onclick="p(1)" >
+<button id="btn6"  onclick="main_game()">start</button>
 <br>
-<table align="center" border=5 width=30% height=60% id="table" style="visibility:hidden;">
+<table align="center" border=5 width=30% height=60% id="table" >
 <caption id="cap">TIC TAC TOE</caption>
 <tr> 
 <td onclick="if(fill[0]==-1){valid_click=1};if(fill[0]!=-1){valid_click=0};img(1);" align ="center"><img id="img1" width=20% height=20% src="blank.jpg"></img>
