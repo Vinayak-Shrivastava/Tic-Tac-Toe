@@ -4,7 +4,7 @@
  <style>
   #btn2
   {
-   visibility:hidden;
+   visibility:hidden;              /*Everything except START GAME button is hidden initially*/
   }
    #btn3
   {
@@ -61,13 +61,13 @@
  </style>
 </head>
 <body>
-<div id="p1" >  </div>
+<div id="p1" >  </div>       <!-- for scores -->
 <div id="p2" > </div>
 <button id="btn1"type="button" onclick="strt_gm_btn()"> Start Game </button>
-<Input id="i1"  placeholder="Enter Player 1 Name"> 
+<Input id="i1"  placeholder="Enter Player 1 Name">  <!--  to input player names-->
 <Input id="i2"  placeholder="Enter Player 2 Name"> 
 <label for="btn2" id="l1" >plyr 1 play as: X</label>
-<input type="radio" id="btn2" name="turn"  onclick="p(1)" >
+<input type="radio" id="btn2" name="turn"  onclick="p(1)" >          <!-- radio button sto input which player will play as X and which as O  -->
 <label for="btn3" id="l2" >eO</label>
 <input type="radio" id="btn3" name="turn"   onclick="p(0)"  >
 <label for="btn4" id="l3" >plyr 2 play as: X</label>
@@ -76,7 +76,7 @@
 <input type="radio" id="btn5" name="turn"    onclick="p(1)" >
 <button id="btn6"  onclick="main_game()">start</button>
 <br>
-<table align="center" border=5 width=30% height=60% id="table" >
+<table align="center" border=5 width=30% height=60% id="table" > <!-- tablein which the game will be played. Inititally each cell has a blank image     -->
 <caption id="cap">TIC TAC TOE</caption>
 <tr> 
 <td onclick="if(fill[0]==-1){valid_click=1};if(fill[0]!=-1){valid_click=0};img(1);" align ="center"><img id="img1" width=20% height=20% src="blank.jpg"></img>
@@ -97,36 +97,31 @@
 
 <script>
 
-turn =1;
-valid_click=-1;
-x=y=p1=p2=X_streak=O_streak="";
-score_X=score_O=0;
+turn =1;                             // to control turn of X and O,1->X,0->O
+valid_click=-1;                      // to check if the click is made on an empty cell inside the table so that game works properly
+x=y=p1=p2=X_streak=O_streak="";         // x and y stores X or O and is used with p1 and p2 to determine which is X and which is O. p1 and p2 sore player names. X_streak and O_streak store in the form of string current game stats for X and Y in the form of (WLLw).
+score_X=score_O=0;                       // stores X's and O's score
 
-fill = [-1,-1,-1,-1,-1,-1,-1,-1,-1]                       //-1->empty,1->X,0->O
-game_end=0;
-function menu()
+fill = [-1,-1,-1,-1,-1,-1,-1,-1,-1]                       //fill is used to store the state of each cell of the table -1->empty,1->filled with X,0-> filled with O
+game_end=0;                                   // 1 if game is ended and o if not
+
+ function menu()                       // function for menu section
 {
-for(i=1;i<=2;i++) 
+for(i=1;i<=2;i++)                    //all expect START GAME btn are hidden.
 {
 document.getElementById("p"+i).style.visibility="hidden";
-document.getElementById("p"+i).innerHTML="";
+document.getElementById("p"+i).innerHTML="";           //the score paras are reset to nothing
 }	
 
-for(i=1;i<=2;i++)  document.getElementById("i"+i).value="";
-document.getElementById("table").style.visibility="hidden";
-document.getElementById("btn1").style.visibility="visible";
-X_streak=O_streak="";
+for(i=1;i<=2;i++)  document.getElementById("i"+i).value="";        // input field values are reset to nothing
+document.getElementById("table").style.visibility="hidden";         // game table is hidden
+document.getElementById("btn1").style.visibility="visible";        // start game button is visible
+X_streak=O_streak="";              // resets all variables
 score_X=score_O=0;
-reset();
+reset();       
 }
 
-function p(a){
-if(a==1) {x="X";y="O";}
-else {x="O";y="X";}
-document.getElementById("btn6").style.visibility="visible";
-}
-
-function strt_gm_btn()
+ function strt_gm_btn()  //hides START GAME button and makes visible the input fields and radio btns 
 {
 for(i=1;i<=2;i++)  document.getElementById("i"+i).style.visibility="visible";
 document.getElementById("btn1").style.visibility="hidden";
@@ -135,32 +130,37 @@ document.getElementById("btn6").style.visibility="hidden";
 for(i=1;i<=4;i++) document.getElementById("l"+i).style.visibility="visible";
 }
 
+ function p(a){               // called by the radio buttons
+if(a==1) {x="X";y="O";}        //recieves 1 if plyr 1 is choosing X or plyr 2 is choosing O. recieves 0 otherwise
+else {x="O";y="X";}
+document.getElementById("btn6").style.visibility="visible"; // makes visible the START button
+}
 
 function main_game()
 {
-if(document.getElementById("i1").value == "" || document.getElementById("i2").value == "") { alert("Please fill both Player's Names");}
+if(document.getElementById("i1").value == "" || document.getElementById("i2").value == "") { alert("Please fill both Player's Names");}        // doesnt proceed until names are entered
 else{
-p1= document.getElementById("i1").value;
+p1= document.getElementById("i1").value;          //p1 takes name of plyr 1 and p2 of plyr 2
 p2=document.getElementById("i2").value;
-document.getElementById("table").style.visibility="visible";
-for(i=1;i<=2;i++) document.getElementById("p" + i).style.visibility="visible";
+document.getElementById("table").style.visibility="visible"; // main game table visible
+for(i=1;i<=2;i++) document.getElementById("p" + i).style.visibility="visible"; //score paras visible
 for(i=1;i<=2;i++){
- document.getElementById("i" + i).style.visibility="hidden";
+ document.getElementById("i" + i).style.visibility="hidden";  // input fields hidden
 }
-for(i=1;i<=6;i++) document.getElementById("btn" + i).style.visibility="hidden";
-for(i=1;i<=4;i++) document.getElementById("l" + i).style.visibility="hidden";
-document.getElementById("p1").innerHTML = p1 +"(playing as "+ x +")"+ " : " +(x=="X"?score_X:score_O) + "(" + (x=="X"?X_streak:O_streak) +")";
+for(i=1;i<=6;i++) document.getElementById("btn" + i).style.visibility="hidden"; //all btns hidden
+for(i=1;i<=4;i++) document.getElementById("l" + i).style.visibility="hidden";       // all labels hidden
+document.getElementById("p1").innerHTML = p1 +"(playing as "+ x +")"+ " : " +(x=="X"?score_X:score_O) + "(" + (x=="X"?X_streak:O_streak) +")"; //fills score paras with plyr names and what they are playing with
 document.getElementById("p2").innerHTML = p2 +"(playing as "+ y +")"+ " : " +(x=="X"?score_O:score_X)+ "(" + (x=="X"?O_streak:X_streak) +")";
 }}
 
-window.onclick = function turn_switch()
+window.onclick = function turn_switch()     //switches the turn for every valid click made
 {
 if(valid_click==1){
 turn==1? turn=0:turn=1;
-valid_click=0;
+valid_click=0;                        //reset valid click
 }}
 
-window.onkeypress = function myFunction(event) {
+window.onkeypress = function myFunction(event) {             // once game is ended. Resets game on pressing r key and goes back to menu on pressing space key
   var x = event.which || event.keyCode;
  if(x==32 && game_end==1){menu();}
  if((x==114 || x==82) && game_end==1){reset();}
@@ -172,22 +172,22 @@ function reset()
 
 for(i=1;i<=9;i++)
 {
-document.getElementById("img"+i).src = "blank.jpg";
+document.getElementById("img"+i).src = "blank.jpg";              // to fill blank images in all cell's
 }
-fill = [-1,-1,-1,-1,-1,-1,-1,-1,-1]
-turn=1;      
-document.getElementById("p1").innerHTML = p1 +"(playing as "+ x +")"+ " : " +(x=="X"?score_X:score_O) + "(" + (x=="X"?X_streak:O_streak) +")";
+fill = [-1,-1,-1,-1,-1,-1,-1,-1,-1]                           // each cell is now blank
+turn=1;                                                        // turn set to 1 as game starts with X
+document.getElementById("p1").innerHTML = p1 +"(playing as "+ x +")"+ " : " +(x=="X"?score_X:score_O) + "(" + (x=="X"?X_streak:O_streak) +")";     // updating score paras
 document.getElementById("p2").innerHTML = p2 +"(playing as "+ y +")"+ " : " +(x=="X"?score_O:score_X)+ "(" + (x=="X"?O_streak:X_streak) +")";
-document.getElementById("cap").innerHTML = "TIC TAC TOE";
-game_end=0;
+document.getElementById("cap").innerHTML = "TIC TAC TOE";     //reseting table caption
+game_end=0;            // reseting game end to zero as new game starts now
 }
 
-function win_check()
+function win_check()     // runs after every turn to check if someone won or to check a draw
 {
-if( ((fill[0] == 1) && (fill[1] == 1) && (fill[2] == 1))||((fill[3] == 1) && (fill[4] == 1) && (fill[5] == 1))||((fill[6] == 1) && (fill[7] == 1) && (fill[8] == 1))||((fill[0] == 1) && (fill[3] == 1) && (fill[6] == 1))||((fill[1] == 1) && (fill[4] == 1) && (fill[7] == 1))||((fill[2] == 1) && (fill[5] == 1) && (fill[8] == 1))||((fill[0] == 1) && (fill[4] == 1) && (fill[8] == 1))||((fill[2] == 1) && (fill[4] == 1) && (fill[6] == 1)) )
+if( ((fill[0] == 1) && (fill[1] == 1) && (fill[2] == 1))||((fill[3] == 1) && (fill[4] == 1) && (fill[5] == 1))||((fill[6] == 1) && (fill[7] == 1) && (fill[8] == 1))||((fill[0] == 1) && (fill[3] == 1) && (fill[6] == 1))||((fill[1] == 1) && (fill[4] == 1) && (fill[7] == 1))||((fill[2] == 1) && (fill[5] == 1) && (fill[8] == 1))||((fill[0] == 1) && (fill[4] == 1) && (fill[8] == 1))||((fill[2] == 1) && (fill[4] == 1) && (fill[6] == 1)) )  // every possible condition for X winning
 {
-fill = [1,1,1,1,1,1,1,1,1];
-if(game_end == 0){
+fill = [1,1,1,1,1,1,1,1,1]; // just randomly filling all the cells so that game can't be further cahnged as if all blocks are filled then no click will be valid
+if(game_end == 0){             //if game isn't ended, increases  X score, shows X won adn ends game
 score_X++;
 X_streak += "W " 
 O_streak += "L "
@@ -205,10 +205,11 @@ document.getElementById("cap").innerHTML = p2 + " Won.Press <b>R</b> to reset.Pr
 game_end=1;
 }
 }
-else if( ((fill[0] == 0) && (fill[1] == 0) && (fill[2] == 0))||((fill[3] == 0) && (fill[4] == 0) && (fill[5] == 0))||((fill[6] == 0) && (fill[7] == 0) && (fill[8] == 0))||((fill[0] == 0) && (fill[3] == 0) && (fill[6] == 0))||((fill[1] == 0) && (fill[4] == 0) && (fill[7] == 0))||((fill[2] == 0) && (fill[5] == 0) && (fill[8] == 0))||((fill[0] == 0) && (fill[4] == 0) && (fill[8] == 0))||((fill[2] == 0) && (fill[4] == 0) && (fill[6] == 0)) )
+else if( ((fill[0] == 0) && (fill[1] == 0) && (fill[2] == 0))||((fill[3] == 0) && (fill[4] == 0) && (fill[5] == 0))||((fill[6] == 0) && (fill[7] == 0) && (fill[8] == 0))||((fill[0] == 0) && (fill[3] == 0) && (fill[6] == 0))||((fill[1] == 0) && (fill[4] == 0) && (fill[7] == 0))||((fill[2] == 0) && (fill[5] == 0) && (fill[8] == 0))||((fill[0] == 0) && (fill[4] == 0) && (fill[8] == 0))||((fill[2] == 0) && (fill[4] == 0) && (fill[6] == 0)) ) //every possible condition for O winning
 {
-fill = [1,1,1,1,1,1,1,1,1];
-if(game_end == 0){
+{
+fill = [1,1,1,1,1,1,1,1,1]; // just randomly filling all the cells so that game can't be further cahnged as if all blocks are filled then no click will be valid
+if(game_end == 0){         //if game isn't ended, increases  O score, shows O won adn ends game
 score_O++;
 X_streak += "L " 
 O_streak += "W "
@@ -226,9 +227,9 @@ document.getElementById("cap").innerHTML = p1 + " Won.Press <b>R</b> to reset.Pr
 }game_end=1;
 }
 }
-else if(fill[0]!=-1 && fill[1]!=-1 && fill[2]!=-1 && fill[3]!=-1 && fill[4]!=-1 && fill[5]!=-1 && fill[6]!=-1 && fill[7]!=-1 && fill[8]!=-1 )
+else if(fill[0]!=-1 && fill[1]!=-1 && fill[2]!=-1 && fill[3]!=-1 && fill[4]!=-1 && fill[5]!=-1 && fill[6]!=-1 && fill[7]!=-1 && fill[8]!=-1 ) // if all cells are filled and nobody won implies game is draw
 {
-if(game_end == 0){
+if(game_end == 0){ // shows game got draw and ends game
 
 X_streak += "D " 
 O_streak += "D "
@@ -243,12 +244,12 @@ game_end=1;
 
 }
 
-function img(i){
+function img(i){                 // recieves a number form 1 to 9, changes source of that cell numger to X or O depending on turn and updates fill variable with the fill made
 if(fill[i-1]==-1){
 if(turn==1){document.getElementById("img"+i).src = "X.jpg";fill[i-1]=1;}
 else{document.getElementById("img"+i).src = "O.jpg";fill[i-1]=0;}
 }
-win_check()
+win_check()          // calls win chekc to check if somone won or draw happened
 }
 
 </script>
