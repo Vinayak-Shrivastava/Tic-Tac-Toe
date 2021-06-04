@@ -4,53 +4,41 @@
 <body>
 <div id="p1" style="visibility:hidden;">  </div>
 <div id="p2" style="visibility:hidden;"> </div>
-
-  <button id="btn1"type="button" onclick="two_plyr()"> Two player </button>
-<label for="btn5" id="l1" style="visibility:hidden;" >Enter Player 1 name:</label>
-<Input id="btn5" style="visibility:hidden;" value="Plyr1" > 
-<label for="btn9" id="l2" style="visibility:hidden;">Enter Player 2 name:</label>
-<Input id="btn9" style="visibility:hidden;" value="Plyr2"> 
-<label for="btn6" id="l3" style="visibility:hidden;">plyr 1 play as: X</label>
-<input type="radio" id="btn6" name="turn"  style="visibility:hidden;" onclick="p1x()" >
-<label for="btn10" id="l4" style="visibility:hidden;">O</label>
-<input type="radio" id="btn10" name="turn"   style="visibility:hidden;" onclick="p1o()"  >
-<label for="btn11" id="l5" style="visibility:hidden;">plyr 2 play as: X</label>
-<input type="radio" id="btn11" name="turn"  style="visibility:hidden;" onclick="p1o()"  >
-<label for="btn12" id="l6" style="visibility:hidden;">O</label>
-<input type="radio" id="btn12" name="turn"   style="visibility:hidden;" onclick="p1x()" >
-<button id="btn13"  style="visibility:hidden;" onclick="main_game()">start</button>
+<button id="btn1"type="button" onclick="strt_gm_btn()"> Start Game </button>
+<Input id="i1" style="visibility:hidden;"  placeholder="Enter Player 1 Name"> 
+<Input id="i2" style="visibility:hidden;"  placeholder="Enter Player 2 Name"> 
+<label for="btn2" id="l1" style="visibility:hidden;">plyr 1 play as: X</label>
+<input type="radio" id="btn2" name="turn"  style="visibility:hidden;" onclick="p(1)" >
+<label for="btn3" id="l2" style="visibility:hidden;">O</label>
+<input type="radio" id="btn3" name="turn"   style="visibility:hidden;" onclick="p(0)"  >
+<label for="btn4" id="l3" style="visibility:hidden;">plyr 2 play as: X</label>
+<input type="radio" id="btn4" name="turn"  style="visibility:hidden;" onclick="p(0)"  >
+<label for="btn5" id="l4" style="visibility:hidden;">O</label>
+<input type="radio" id="btn5" name="turn"   style="visibility:hidden;" onclick="p(1)" >
+<button id="btn6"  style="visibility:hidden;" onclick="main_game()">start</button>
 <br>
-<button id="btn2"type="button" onclick="mode=2;main_game();"> Single PLayer </button>
-<button id="btn7"  style="visibility:hidden;"> select difficulty </button> <button id="btn8" style="visibility:hidden;"> play as </button>
-<br>
-
-<button id="btn3"type="button" onclick="instructions()"> Instructions </button><br>
-<button id="btn4"type="button" onclick="window.close()"> Exit </button>
-
-
-
 <table align="center" border=5 width=30% height=60% id="table" style="visibility:hidden;">
 <caption id="cap">TIC TAC TOE</caption>
 <tr> 
-<td onclick="if(fill[0]==-1){valid_click=1};if(fill[0]!=-1){valid_click=0};img1();" align ="center"><img id="img1" width=20% height=20% src="blank.jpg"></img>
-<td onclick="if(fill[1]==-1){valid_click=1};if(fill[1]!=-1){valid_click=0};img2();" align ="center"><img id="img2" width=20% height=20% src="blank.jpg"></img>
-<td onclick="if(fill[2]==-1){valid_click=1};if(fill[2]!=-1){valid_click=0};img3();" align ="center"><img id="img3" width=20% height=20% src="blank.jpg"></img>
+<td onclick="if(fill[0]==-1){valid_click=1};if(fill[0]!=-1){valid_click=0};img(1);" align ="center"><img id="img1" width=20% height=20% src="blank.jpg"></img>
+<td onclick="if(fill[1]==-1){valid_click=1};if(fill[1]!=-1){valid_click=0};img(2);" align ="center"><img id="img2" width=20% height=20% src="blank.jpg"></img>
+<td onclick="if(fill[2]==-1){valid_click=1};if(fill[2]!=-1){valid_click=0};img(3);" align ="center"><img id="img3" width=20% height=20% src="blank.jpg"></img>
 </tr>
 <tr>
-<td onclick="if(fill[3]==-1){valid_click=1};if(fill[3]!=-1){valid_click=0};img4();" align ="center"><img id="img4" width=20% height=20% src="blank.jpg"></img>
-<td onclick="if(fill[4]==-1){valid_click=1};if(fill[4]!=-1){valid_click=0};img5();" align ="center"><img id="img5" width=20% height=20% src="blank.jpg"></img>
-<td onclick="if(fill[5]==-1){valid_click=1};if(fill[5]!=-1){valid_click=0};img6();" align ="center"><img id="img6" width=20% height=20% src="blank.jpg"></img>
+<td onclick="if(fill[3]==-1){valid_click=1};if(fill[3]!=-1){valid_click=0};img(4);" align ="center"><img id="img4" width=20% height=20% src="blank.jpg"></img>
+<td onclick="if(fill[4]==-1){valid_click=1};if(fill[4]!=-1){valid_click=0};img(5);" align ="center"><img id="img5" width=20% height=20% src="blank.jpg"></img>
+<td onclick="if(fill[5]==-1){valid_click=1};if(fill[5]!=-1){valid_click=0};img(6);" align ="center"><img id="img6" width=20% height=20% src="blank.jpg"></img>
 </tr>
 <tr>
-<td onclick="if(fill[6]==-1){valid_click=1};if(fill[6]!=-1){valid_click=0};img7();" align ="center"><img id="img7" width=20% height=20% src="blank.jpg"></img>
-<td onclick="if(fill[7]==-1){valid_click=1};if(fill[7]!=-1){valid_click=0};img8();" align ="center"><img id="img8" width=20% height=20% src="blank.jpg"></img>
-<td onclick="if(fill[8]==-1){valid_click=1};if(fill[8]!=-1){valid_click=0};img9();" align ="center"><img id="img9" width=20% height=20% src="blank.jpg"></img>
+<td onclick="if(fill[6]==-1){valid_click=1};if(fill[6]!=-1){valid_click=0};img(7);" align ="center"><img id="img7" width=20% height=20% src="blank.jpg"></img>
+<td onclick="if(fill[7]==-1){valid_click=1};if(fill[7]!=-1){valid_click=0};img(8);" align ="center"><img id="img8" width=20% height=20% src="blank.jpg"></img>
+<td onclick="if(fill[8]==-1){valid_click=1};if(fill[8]!=-1){valid_click=0};img(9);" align ="center"><img id="img9" width=20% height=20% src="blank.jpg"></img>
 </tr>
 </table>
 
 <script>
-mode=0;
-plyr="x"; d=1;    //mode--twoplayer-1,vs_computer-2;plyr--x,o;d-- difficulty,1-easy,2-medium,3-hard;
+
+turn =1;
 valid_click=-1;
 x=y=p1=p2=X_streak=O_streak="";
 score_X=score_O=0;
@@ -59,202 +47,78 @@ fill = [-1,-1,-1,-1,-1,-1,-1,-1,-1]                       //-1->empty,1->X,0->O
 game_end=0;
 function menu()
 {
-document.getElementById("p1").style.visibility="hidden";
-document.getElementById("p2").style.visibility="hidden";
-document.getElementById("p1").innerHTML="";
-document.getElementById("p2").innerHTML="";
+for(i=1;i<=2;i++) 
+{
+document.getElementById("p"+i).style.visibility="hidden";
+document.getElementById("p"+i).innerHTML="";
+}	
+
+for(i=1;i<=2;i++)  document.getElementById("i"+i).value="";
 document.getElementById("table").style.visibility="hidden";
-document.getElementById("btn3").style.visibility="visible";
-document.getElementById("btn4").style.visibility="visible";
-document.getElementById("btn2").style.visibility="visible";
 document.getElementById("btn1").style.visibility="visible";
-document.getElementById("btn5").style.visibility="hidden";
-document.getElementById("btn6").style.visibility="hidden";
-document.getElementById("btn7").style.visibility="hidden";
-document.getElementById("btn8").style.visibility="hidden";
-document.getElementById("btn9").style.visibility="hidden";
-document.getElementById("btn10").style.visibility="hidden";
-document.getElementById("btn11").style.visibility="hidden";
-document.getElementById("btn12").style.visibility="hidden";
-document.getElementById("btn13").style.visibility="hidden";
-document.getElementById("l1").style.visibility="hidden";
-document.getElementById("l2").style.visibility="hidden";
-document.getElementById("l3").style.visibility="hidden";
-document.getElementById("l4").style.visibility="hidden";
-document.getElementById("l5").style.visibility="hidden";
-document.getElementById("l6").style.visibility="hidden";
 X_streak=O_streak="";
 score_X=score_O=0;
 reset();
-
-
-
 }
-function p1x(){
-x="X";y="O"
-temp();
-}
-function p1o()
-{
-x="O";y="X"
-temp();
-}
-function temp()
-{
 
-p1= document.getElementById("btn5").value;
-p2=document.getElementById("btn9").value;
-document.getElementById("btn13").style.visibility="visible";
-
-}
-function two_plyr()
-{
-document.getElementById("btn5").style.visibility="visible";
+function p(a){
+if(a==1) {x="X";y="O";}
+else {x="O";y="X";}
 document.getElementById("btn6").style.visibility="visible";
-document.getElementById("btn1").style.visibility="hidden";
-document.getElementById("btn2").style.visibility="hidden";
-document.getElementById("btn3").style.visibility="hidden";
-document.getElementById("btn4").style.visibility="hidden";
-document.getElementById("btn7").style.visibility="hidden";
-document.getElementById("btn8").style.visibility="hidden";
-document.getElementById("btn9").style.visibility="visible";
-document.getElementById("btn10").style.visibility="visible";
-document.getElementById("l1").style.visibility="visible";
-document.getElementById("l2").style.visibility="visible";
-document.getElementById("l3").style.visibility="visible";
-document.getElementById("l4").style.visibility="visible";
-document.getElementById("l5").style.visibility="visible";
-document.getElementById("l6").style.visibility="visible";
-document.getElementById("btn11").style.visibility="visible";
-document.getElementById("btn12").style.visibility="visible";
-document.getElementById("btn13").style.visibility="hidden";
-mode=1;
+}
 
+function strt_gm_btn()
+{
+for(i=1;i<=2;i++)  document.getElementById("i"+i).style.visibility="visible";
+document.getElementById("btn1").style.visibility="hidden";
+for(i=2;i<=5;i++) document.getElementById("btn"+i).style.visibility="visible";
+document.getElementById("btn6").style.visibility="hidden";
+for(i=1;i<=4;i++) document.getElementById("l"+i).style.visibility="visible";
 }
 
 
 function main_game()
 {
-document.getElementById("table").style.visibility="visible";
-document.getElementById("p1").style.visibility="visible";
-document.getElementById("p2").style.visibility="visible";
-document.getElementById("btn3").style.visibility="hidden";
-document.getElementById("btn4").style.visibility="hidden";
-document.getElementById("btn2").style.visibility="hidden";
-document.getElementById("btn1").style.visibility="hidden";
-document.getElementById("btn5").style.visibility="hidden";
-document.getElementById("btn6").style.visibility="hidden";
-document.getElementById("btn7").style.visibility="hidden";
-document.getElementById("btn8").style.visibility="hidden";
-document.getElementById("btn9").style.visibility="hidden";
-document.getElementById("btn10").style.visibility="hidden";
-document.getElementById("l1").style.visibility="hidden";
-document.getElementById("l2").style.visibility="hidden";
-document.getElementById("l3").style.visibility="hidden";
-document.getElementById("l4").style.visibility="hidden";
-document.getElementById("l5").style.visibility="hidden";
-document.getElementById("l6").style.visibility="hidden";
-document.getElementById("btn11").style.visibility="hidden";
-document.getElementById("btn12").style.visibility="hidden";
-document.getElementById("btn13").style.visibility="hidden";
-if(x=="X"){
-document.getElementById("p1").innerHTML = p1 +"(playing as "+ x +")"+ " : " + score_X + "(" + X_streak +")";
-document.getElementById("p2").innerHTML = p2 +"(playing as "+ y +")"+ " : " + score_O + "(" + O_streak +")";
-}
+if(document.getElementById("i1").value == "" || document.getElementById("i2").value == "") { alert("Please fill both Player's Names");}
 else{
-document.getElementById("p1").innerHTML = p1 +"(playing as "+ x +")"+ " : " + score_O + "(" + O_streak +")";
-document.getElementById("p2").innerHTML = p2 +"(playing as "+ y +")"+ " : " + score_X + "(" + X_streak +")";
+p1= document.getElementById("i1").value;
+p2=document.getElementById("i2").value;
+document.getElementById("table").style.visibility="visible";
+for(i=1;i<=2;i++) document.getElementById("p" + i).style.visibility="visible";
+for(i=1;i<=2;i++){
+ document.getElementById("i" + i).style.visibility="hidden";
 }
-
-}
-
-
-
-
-
-
-
-
-if(plyr == "x"){turn =1;}
-else if(plyr == "o"){turn =0;}                // X=1,O=0
-
-
-
-
-
-
+for(i=1;i<=6;i++) document.getElementById("btn" + i).style.visibility="hidden";
+for(i=1;i<=4;i++) document.getElementById("l" + i).style.visibility="hidden";
+document.getElementById("p1").innerHTML = p1 +"(playing as "+ x +")"+ " : " +(x=="X"?score_X:score_O) + "(" + (x=="X"?X_streak:O_streak) +")";
+document.getElementById("p2").innerHTML = p2 +"(playing as "+ y +")"+ " : " +(x=="X"?score_O:score_X)+ "(" + (x=="X"?O_streak:X_streak) +")";
+}}
 
 window.onclick = function turn_switch()
 {
-if(valid_click==1 && mode==1){
-
-if(turn==1){turn=0;}
-else{turn=1;}
+if(valid_click==1){
+turn==1? turn=0:turn=1;
 valid_click=0;
 }}
-
-
-function computer(){
-document.getElementById("img9").src = "O.jpg";
-}
-
-function calculate(){
-total=0;x_win=0;o_win=0;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-alert("Total ="+total+",X wins =" + x_win+",O wins =" + o_win);
-}
 
 window.onkeypress = function myFunction(event) {
   var x = event.which || event.keyCode;
  if(x==32 && game_end==1){menu();}
  if((x==114 || x==82) && game_end==1){reset();}
-if(x==13){calculate();}
 
 }
-
 
 function reset()
 {
-document.getElementById("img1").src = "blank.jpg";
-document.getElementById("img2").src = "blank.jpg";
-document.getElementById("img3").src = "blank.jpg";
-document.getElementById("img4").src = "blank.jpg";
-document.getElementById("img5").src = "blank.jpg";
-document.getElementById("img6").src = "blank.jpg";
-document.getElementById("img7").src = "blank.jpg";
-document.getElementById("img8").src = "blank.jpg";
-document.getElementById("img9").src = "blank.jpg";
 
+for(i=1;i<=9;i++)
+{
+document.getElementById("img"+i).src = "blank.jpg";
+}
 fill = [-1,-1,-1,-1,-1,-1,-1,-1,-1]
-if(plyr == "x"){turn =1;}
-else if(plyr == "o"){turn =0;}      
-if(x=="X"){
-document.getElementById("p1").innerHTML = p1 +"(playing as "+ x +")"+ " : " + score_X + "(" + X_streak +")";
-document.getElementById("p2").innerHTML = p2 +"(playing as "+ y +")"+ " : " + score_O + "(" + O_streak +")";
-}
-else{
-document.getElementById("p1").innerHTML = p1 +"(playing as "+ x +")"+ " : " + score_O + "(" + O_streak +")";
-document.getElementById("p2").innerHTML = p2 +"(playing as "+ y +")"+ " : " + score_X + "(" + X_streak +")";
-}
+turn=1;      
+document.getElementById("p1").innerHTML = p1 +"(playing as "+ x +")"+ " : " +(x=="X"?score_X:score_O) + "(" + (x=="X"?X_streak:O_streak) +")";
+document.getElementById("p2").innerHTML = p2 +"(playing as "+ y +")"+ " : " +(x=="X"?score_O:score_X)+ "(" + (x=="X"?O_streak:X_streak) +")";
 document.getElementById("cap").innerHTML = "TIC TAC TOE";
 game_end=0;
 }
@@ -278,7 +142,6 @@ document.getElementById("cap").innerHTML = p1 + " Won.Press <b>R</b> to reset.Pr
 else{
 alert(p2+ " wins");
 document.getElementById("cap").innerHTML = p2 + " Won.Press <b>R</b> to reset.Press <b>Space Bar</b> to go back to the menu.";
-
 }
 game_end=1;
 }
@@ -321,80 +184,13 @@ game_end=1;
 
 }
 
-
-function img1(){
-if(fill[0]==-1){
-if(turn==1){document.getElementById("img1").src = "X.jpg";fill[0]=1;}
-else{document.getElementById("img1").src = "O.jpg";fill[0]=0;}
-
-if(mode == 2){setTimeout(computer,100);}
+function img(i){
+if(fill[i-1]==-1){
+if(turn==1){document.getElementById("img"+i).src = "X.jpg";fill[i-1]=1;}
+else{document.getElementById("img"+i).src = "O.jpg";fill[i-1]=0;}
 }
-win_check()}
-function img2(){
-if(fill[1]==-1){
-if(turn==1){document.getElementById("img2").src = "X.jpg";fill[1]=1;}
-else{document.getElementById("img2").src = "O.jpg";fill[1]=0;}
-
-if(mode == 2){computer();}
+win_check()
 }
-win_check()}
-function img3(){
-if(fill[2]==-1){
-if(turn==1){document.getElementById("img3").src = "X.jpg";fill[2]=1;}
-else{document.getElementById("img3").src = "O.jpg";fill[2]=0;}
-
-if(mode == 2){computer();}
-}
-win_check()}
-function img4(){
-if(fill[3]==-1){
-if(turn==1){document.getElementById("img4").src = "X.jpg";fill[3]=1;}
-else{document.getElementById("img4").src = "O.jpg";fill[3]=0;}
-
-if(mode == 2){computer();}
-}
-win_check()}
-function img5(){
-if(fill[4]==-1){
-if(turn==1){document.getElementById("img5").src = "X.jpg";fill[4]=1;}
-else{document.getElementById("img5").src = "O.jpg";fill[4]=0;}
-
-if(mode == 2){computer();}
-}
-win_check()}
-function img6(){
-if(fill[5]==-1){
-if(turn==1){document.getElementById("img6").src = "X.jpg";fill[5]=1;}
-else{document.getElementById("img6").src = "O.jpg";fill[5]=0;}
-
-if(mode == 2){computer();}
-}
-win_check()}
-
-function img7(){
-if(fill[6]==-1){
-if(turn==1){document.getElementById("img7").src = "X.jpg";fill[6]=1;}
-else{document.getElementById("img7").src = "O.jpg";fill[6]=0;}
-
-if(mode == 2){computer();}
-}
-win_check()}
-function img8(){
-if(fill[7]==-1){
-if(turn==1){document.getElementById("img8").src = "X.jpg";fill[7]=1;}
-else{document.getElementById("img8").src = "O.jpg";fill[7]=0;}
-
-if(mode == 2){computer();}
-}
-win_check()}
-function img9(){
-if(fill[8]==-1){
-if(turn==1){document.getElementById("img9").src = "X.jpg";fill[8]=1;}
-else{document.getElementById("img9").src = "O.jpg";fill[8]=0;}
-
-if(mode == 2){computer();}
-}
-win_check()}
 
 </script>
 </body>
